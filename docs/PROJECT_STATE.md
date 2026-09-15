@@ -8,16 +8,16 @@
 - **Deployment status:** in sync
 - **Operating mode:** build
 - **Current objective:** Complete the AI Builders Hackathon submission while using the standalone LeakLens deployment as the only canonical product origin.
-- **Latest completed action:** Standalone GitHub Pages app and deck were independently verified live; obsolete LeakLens implementation files were removed from `eurekawebsites/tarjeta-aster`, leaving only continuity redirects at the old app and deck routes.
+- **Latest completed action:** Standalone GitHub Pages app and deck are live; the authorized `tarjeta-aster` cleanup deployed successfully at `7bc609ada3f922525c01afda93c3efb31e35daf9`, and both legacy LeakLens routes were verified redirecting to the canonical standalone destinations.
 - **Current application-code baseline:** `0b085f91261cf751e67e866215918d2b9f343053` — corrected `app-v3.js` audit engine; later standalone commits are judging/submission/docs/tracker work
 - **Current production application baseline:** standalone GitHub Pages serves current `main`; verified live 2026-09-15 at `https://eurekawebsites.github.io/leaklens/` and `/deck.html`
 - **Working branch:** main
 - **Deployment / environment:** GitHub Pages from `main` repository root; canonical app `https://eurekawebsites.github.io/leaklens/`; canonical deck `https://eurekawebsites.github.io/leaklens/deck.html`
-- **Blocker:** no LeakLens product/deployment blocker. The separately authorized `tarjeta-aster` legacy-route cleanup is committed at `7bc609ada3f922525c01afda93c3efb31e35daf9`; its native Pages publication was still pending at last check, so redirect acceptance remains a cleanup verification item rather than a LeakLens deployment blocker.
+- **Blocker:** none for product/deployment. Devpost authentication/final submission and any required video upload remain the only submission gates if not already completed.
 - **User action required:** Devpost authentication/final submission and any required video upload remain human gates if not already completed.
 - **Dependencies on other agents:** Eureka Brain coordinates scope; no implementation dependency is blocking LeakLens.
 - **Current phase:** Standalone product live; hackathon submission and revenue use
-- **Resume point:** Use only the standalone app/repo/deck URLs in Devpost and outreach. Verify the old `tarjeta-aster/leaklens/` and `/leaklens/deck.html` routes redirect after its Pages build finishes, then finish the Devpost submission before the contest deadline.
+- **Resume point:** Use only the standalone app/repo/deck URLs in Devpost and outreach; finish the Devpost submission before the contest deadline while continuing Revenue Sprint distribution.
 
 ## Current state
 
@@ -48,16 +48,17 @@ Removed from the digital-card repo: obsolete LeakLens README, judging/submission
 ## Verification evidence
 
 - Standalone app and deck returned live product content after Pages enablement.
-- Standalone repository `main` was reconciled at `8a0fa887eabe1d5f657423463ccd345413803f76` before this tracker update; the application engine's path history identifies `0b085f91261cf751e67e866215918d2b9f343053` as the corrected engine commit.
+- Standalone repository `main` was reconciled at `8a0fa887eabe1d5f657423463ccd345413803f76` before tracker-only checkpoint updates; the application engine's path history identifies `0b085f91261cf751e67e866215918d2b9f343053` as the corrected engine commit.
 - `tarjeta-aster` cleanup source was read back on `main`: its legacy `leaklens/` directory contains only redirect `index.html` and `deck.html` after cleanup.
-- `tarjeta-aster` digital-card root remained live with title `Aster Íñigo Volta` and its Coordenada Viajes / Eureka Tech card links during verification.
-- No paid GitHub Actions were used. The digital-card repo's established native GitHub Pages build was triggered automatically by the cleanup commits and was still pending at the last recorded check.
+- `tarjeta-aster` native Pages run `34952330081` completed successfully on 2026-09-15 for cleanup commit `7bc609ada3f922525c01afda93c3efb31e35daf9`; Pages status was confirmed built.
+- Live acceptance after that deployment: the digital-card root plus `tarjeta-cv.html` and `tarjeta-ew.html` returned HTTP 200, and both legacy LeakLens continuity routes resolved to the standalone app/deck destinations, which also returned HTTP 200.
+- No paid GitHub Actions were introduced; deployment used the repository's established native GitHub Pages mechanism.
 
 ## NEXT
 
 1. Finish the Devpost submission using only the canonical standalone URLs in `SUBMISSION.md`; complete human authentication/video gates if still pending.
-2. Verify the native `tarjeta-aster` Pages build for cleanup commit `7bc609ada3f922525c01afda93c3efb31e35daf9` completes and that both legacy LeakLens routes redirect to the canonical standalone destinations.
-3. Continue Revenue Sprint distribution/prospecting without reintroducing LeakLens files into the digital-card repository.
+2. Continue Revenue Sprint distribution/prospecting and commercial follow-up without reintroducing LeakLens files into the digital-card repository.
+3. Keep product/deployment evidence here and commercial outreach/results only in the existing Products & Quotes tracker.
 
 ## Handoff
 
