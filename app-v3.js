@@ -96,7 +96,7 @@ function audit(t) {
     p += 8
     add(f, a, 'Differentiation is not explicit in supplied copy', 'medium', 'Visitors may not know why to choose this business.', 'No recognized specialization, customization or distinctive-process signal was detected.', 'Make the promise specific', 'Name the customer, outcome, specialty or unique process.')
   }
-  return { p: Math.min(85, p), f, a, signals }
+  return { p: Math.min(85, p), f, a, signals, aiEvaluated: false, aiAdded: 0 }
 }
 
 async function ai(t, r) {
@@ -104,28 +104,35 @@ async function ai(t, r) {
   const labs = ['clear and low-friction booking process', 'confusing or high-friction booking process', 'strong trust and credibility signals', 'weak trust and credibility signals', 'strong call to action', 'weak or vague call to action', 'clear differentiation and value proposition', 'generic or unclear value proposition']
   try {
     const o = await clf(t.slice(0, 1800), labs, { multi_label: true })
+    r.aiEvaluated = true
     const m = Object.fromEntries(o.labels.map((x, i) => [x, o.scores[i]]))
     const risks = [['AI flags booking friction', 'confusing or high-friction booking process'], ['AI flags a credibility gap', 'weak trust and credibility signals'], ['AI flags weak action language', 'weak or vague call to action'], ['AI flags generic positioning', 'generic or unclear value proposition']]
       .map(x => [x[0], m[x[1]] || 0]).sort((x, y) => y[1] - x[1]).slice(0, 2)
     for (const [title, risk] of risks) if (risk > .6) {
       r.p = Math.min(90, r.p + (risk > .75 ? 10 : 6))
+      r.aiAdded += 1
       add(r.f, r.a, title, risk > .75 ? 'high' : 'medium', 'The local model sees semantic conversion risk beyond keyword checks.', 'Local zero-shot confidence: ' + Math.round(risk * 100) + '%.', 'Tighten the message', 'Make the next step, evidence and customer outcome more explicit.')
     }
     return r
   } catch (e) {
     console.warn(e)
+    r.aiEvaluated = false
+    r.aiAdded = 0
     return r
   }
 }
 
-function render(r, used) {
+function render(r) {
   const s = Math.max(10, 100 - r.p)
   const c = s >= 80 ? 'var(--good)' : s >= 60 ? 'var(--warn)' : 'var(--bad)'
   const labels = { cta: 'CTA', capture: 'Lead capture', price: 'Price/quote', proof: 'Trust proof', diff: 'Differentiation' }
   $('#score').textContent = s
   $('#ring').style.background = `conic-gradient(${c} ${s * 3.6}deg,#202b3e 0)`
   $('#grade').textContent = s >= 85 ? 'Conversion-ready' : s >= 70 ? 'Mostly healthy' : s >= 55 ? 'Leaking intent' : 'High-friction'
-  $('#summary').textContent = (r.f.length ? r.f.length + ' evidence-backed issues ranked. ' : 'No deterministic leaks detected in the supplied copy. ') + (used ? 'Local AI added semantic risk signals.' : 'Rules-only mode; local AI is optional.')
+  const modeSummary = r.aiEvaluated
+    ? (r.aiAdded ? `Local AI added ${r.aiAdded} semantic risk signal${r.aiAdded === 1 ? '' : 's'}.` : 'Local AI evaluated the copy and added no extra risk signals.')
+    : (clf ? 'Local AI inference was unavailable; deterministic rules were used.' : 'Rules-only mode; local AI is optional.')
+  $('#summary').textContent = (r.f.length ? r.f.length + ' evidence-backed issues ranked. ' : 'No deterministic leaks detected in the supplied copy. ') + modeSummary
   $('#signals').innerHTML = Object.entries(r.signals).filter(x => x[1]).map(x => `<span class="yes">✓ ${labels[x[0]]}</span>`).join('')
   $('#findings').innerHTML = r.f.length ? r.f.slice(0, 6).map(x => `<article class="finding"><span class="sev ${x.s}">${x.s}</span><h3>${x.t}</h3><p>${x.d}</p><p>Evidence: ${x.e}</p></article>`).join('') : `<article class="finding healthy"><h3>✓ No deterministic leak found</h3><p>The supplied copy contains recognized CTA, lead-capture, price/quote, trust-proof and differentiation signals.</p></article>`
   $('#actiongrid').innerHTML = r.a.length ? r.a.slice(0, 6).map(x => `<article class="action"><b>${x[0]}</b><h3>${x[1]}</h3><p>${x[2]}</p></article>`).join('') : `<article class="action"><b>VERIFY</b><h3>Test the live journey</h3><p>Copy analysis is healthy. Next inspect actual buttons, forms, mobile layout, speed and booking flow.</p></article>`
@@ -147,9 +154,8 @@ $('#analyze').onclick = async () => {
   b.textContent = 'Analyzing…'
   try {
     let r = audit(t)
-    const used = !!clf
     r = await ai(t, r)
-    render(r, used)
+    render(r)
   } finally {
     b.disabled = false
     b.textContent = 'Analyze again →'
