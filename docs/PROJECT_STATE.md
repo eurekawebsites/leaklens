@@ -4,20 +4,20 @@
 - **Project:** LeakLens
 - **Implementation owner:** Revenue Sprint Agent
 - **Lifecycle state:** active
-- **Workflow status:** ready
+- **Workflow status:** blocked
 - **Deployment status:** in sync
 - **Operating mode:** build
 - **Current objective:** Complete the AI Builders Hackathon submission while using the standalone LeakLens deployment as the only canonical product origin.
-- **Latest completed action:** Standalone GitHub Pages app and deck are live; the authorized `tarjeta-aster` cleanup deployed successfully at `7bc609ada3f922525c01afda93c3efb31e35daf9`, and both legacy LeakLens routes were verified redirecting to the canonical standalone destinations.
+- **Latest completed action:** Added `DEMO_SCRIPT.md` at `56b19dcad9c9b30272c040c42e816c41555d5cb6` with a 3-minute live-demo/narration plan aligned to the hackathon requirements. A live Devpost check confirmed the browser is not authenticated or registered for this hackathon, so submission creation cannot proceed until Aster completes the human login/registration gate.
 - **Current application-code baseline:** `0b085f91261cf751e67e866215918d2b9f343053` — corrected `app-v3.js` audit engine; later standalone commits are judging/submission/docs/tracker work
 - **Current production application baseline:** standalone GitHub Pages serves current `main`; verified live 2026-09-15 at `https://eurekawebsites.github.io/leaklens/` and `/deck.html`
 - **Working branch:** main
 - **Deployment / environment:** GitHub Pages from `main` repository root; canonical app `https://eurekawebsites.github.io/leaklens/`; canonical deck `https://eurekawebsites.github.io/leaklens/deck.html`
-- **Blocker:** none for product/deployment. Devpost authentication/final submission and any required video upload remain the only submission gates if not already completed.
-- **User action required:** Devpost authentication/final submission and any required video upload remain human gates if not already completed.
+- **Blocker:** Devpost browser session is logged out and the account is not yet registered for AI Builders Hackathon. A demo-video URL is also required before final submission.
+- **User action required:** Log into Devpost, join/register for AI Builders Hackathon, and start the LeakLens submission. Record/upload the demo video using `DEMO_SCRIPT.md` or otherwise provide a judge-accessible video URL. Do not claim student status; the published rules and organizer clarification allow founders/entrepreneurs.
 - **Dependencies on other agents:** Eureka Brain coordinates scope; no implementation dependency is blocking LeakLens.
 - **Current phase:** Standalone product live; hackathon submission and revenue use
-- **Resume point:** Use only the standalone app/repo/deck URLs in Devpost and outreach; finish the Devpost submission before the contest deadline while continuing Revenue Sprint distribution.
+- **Resume point:** After Aster authenticates/registers in Devpost, inspect the real submission form, populate all project fields from `SUBMISSION.md` and canonical links, add the demo video URL, and submit before the deadline. Continue Revenue Sprint distribution in parallel.
 
 ## Current state
 
@@ -31,6 +31,7 @@ Verified live standalone destinations on 2026-09-15:
 - QA: `TESTING.md`
 - Judging evidence: `JUDGING.md`
 - Devpost copy: `SUBMISSION.md`
+- Demo recording script: `DEMO_SCRIPT.md`
 
 The documented sample result remains **45/100 (High-friction)** with phone-only booking, Mexico/USD mismatch and thin trust proof. The complete-copy Eureka Tech regression recognizes CTA, lead capture, price/quote, trust proof and differentiation, covering the original false-positive vocabulary bug.
 
@@ -53,16 +54,19 @@ Removed from the digital-card repo: obsolete LeakLens README, judging/submission
 - `tarjeta-aster` native Pages run `34952330081` completed successfully on 2026-09-15 for cleanup commit `7bc609ada3f922525c01afda93c3efb31e35daf9`; Pages status was confirmed built.
 - Live acceptance after that deployment: the digital-card root plus `tarjeta-cv.html` and `tarjeta-ew.html` returned HTTP 200, and both legacy LeakLens continuity routes resolved to the standalone app/deck destinations, which also returned HTTP 200.
 - No paid GitHub Actions were introduced; deployment used the repository's established native GitHub Pages mechanism.
+- Devpost live browser inspection on 2026-09-15 showed `Log in / Sign up`, no saved credentials, and a `Join hackathon` registration state rather than an existing LeakLens submission.
 
 ## NEXT
 
-1. Finish the Devpost submission using only the canonical standalone URLs in `SUBMISSION.md`; complete human authentication/video gates if still pending.
-2. Continue Revenue Sprint distribution/prospecting and commercial follow-up without reintroducing LeakLens files into the digital-card repository.
-3. Keep product/deployment evidence here and commercial outreach/results only in the existing Products & Quotes tracker.
+1. Aster logs into Devpost and registers/joins AI Builders Hackathon.
+2. Record/upload a demo under 5 minutes using `DEMO_SCRIPT.md` and obtain a judge-accessible URL.
+3. Resume authenticated Devpost submission, populate from `SUBMISSION.md`, canonical app/source/deck links and the video URL, then submit before the deadline.
+4. Continue Revenue Sprint distribution/prospecting and commercial follow-up without reintroducing LeakLens files into the digital-card repository.
+5. Keep product/deployment evidence here and commercial outreach/results only in the existing Products & Quotes tracker.
 
 ## Handoff
 
-Read this tracker, README.md, TESTING.md, JUDGING.md, SUBMISSION.md, and `eurekawebsites/eureka-portal/docs/AGENT_COORDINATION_PROTOCOL.md`. Preserve the standalone GitHub Pages origin and keep commercial outreach facts in the Products & Quotes tracker.
+Read this tracker, README.md, TESTING.md, JUDGING.md, SUBMISSION.md, DEMO_SCRIPT.md, and `eurekawebsites/eureka-portal/docs/AGENT_COORDINATION_PROTOCOL.md`. Preserve the standalone GitHub Pages origin and keep commercial outreach facts in the Products & Quotes tracker.
 
 ## Maintenance rule
 
