@@ -37,7 +37,9 @@ Absence findings must be phrased as **not detected in supplied copy**, not as pr
 6. If a semantic risk crosses threshold, confirm local zero-shot confidence appears as evidence.
 7. Confirm the summary distinguishes among: AI added semantic risks, AI evaluated but added no extra risks, and AI inference unavailable.
 
-A focused live browser load test on 2026-09-15 reached **Local AI ready / AI loaded** successfully. Because first-load model delivery depends on external CDN/model hosting, the audited release also includes a 90-second UI fallback that restores rules-ready state and exposes **Retry local AI** instead of leaving the product indefinitely stuck in a loading state.
+A focused live browser load test on 2026-09-15 reached **Local AI ready / AI loaded** successfully. A post-fix end-to-end AI acceptance run then loaded the model, analyzed the sample in **Local AI + rules** mode, returned the expected **45/100 High-friction** deterministic result, and correctly stated: **“Local AI evaluated the copy and added no extra risk signals.”**
+
+Because first-load model delivery depends on external CDN/model hosting, the audited release also includes a 90-second UI fallback that restores rules-ready state and exposes **Retry local AI** instead of leaving the product indefinitely stuck in a loading state.
 
 ## Graceful degradation
 Without loading local AI, the deterministic engine must still produce score, findings and remediation. The optional AI layer must never be required for the core audit.
@@ -71,4 +73,4 @@ The audited release added:
 - mobile visibility for the audit mode label;
 - cache-busted audited JS/CSS asset references.
 
-Rules-only live acceptance passed 4/4 checks after the first hardening pass. Final optional-AI inference acceptance is the remaining pre-submission QA gate.
+Rules-only live acceptance passed 4/4 checks. Optional local-AI load + inference acceptance also passed. No product/backend blocker remains for submission.
