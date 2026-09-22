@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "eureka-leaklens",
     "public": ".",
     "ignore": [
       "firebase.json",
