@@ -3,8 +3,8 @@
 Privacy-first AI conversion auditor for service-business websites, built for the AI Builders Hackathon 2026.
 
 ## Live product
-- App: https://eurekawebsites.github.io/leaklens/
-- Deck: https://eurekawebsites.github.io/leaklens/deck.html
+- App: https://eureka-leaklens.web.app/
+- Deck: https://eureka-leaklens.web.app/deck.html
 - QA: [TESTING.md](TESTING.md)
 - Judging evidence: [JUDGING.md](JUDGING.md)
 - Devpost copy: [SUBMISSION.md](SUBMISSION.md)
@@ -26,7 +26,7 @@ The built-in sample scores **45/100 (High-friction)** with phone-only booking, p
 LeakLens scores **the supplied copy**, not facts it cannot observe. Absence findings are deliberately phrased as “not detected in supplied copy.”
 
 ## Tech
-HTML, CSS, JavaScript, Transformers.js 4.2, MobileBERT MNLI ONNX, browser-side inference and GitHub Pages.
+HTML, CSS, JavaScript, Transformers.js 4.2, MobileBERT MNLI ONNX, browser-side inference and Firebase Hosting.
 
 ## Roadmap
 Consent-based URL ingestion, screenshot/visual-hierarchy analysis, accessibility/mobile checks, analytics integrations, vertical-specific scoring and before/after audit history.
